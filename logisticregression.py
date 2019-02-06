@@ -1,16 +1,16 @@
 import numpy as np
-from sklearn import tree
+from sklearn import linear_model
 import argparse
 import datasets.uci_adult
 
 
-class DecisionTree:
+class LogisticRegressionModel:
 
     clf_model = None
 
     def __init__(self):
-        self.clf_model = tree.DecisionTreeClassifier()
-        print("Created DecisionTreeClassifier")
+        self.clf_model = linear_model.LogisticRegression()
+        print("Created LogisticRegressionModel")
 
     def train(self, train_data):
         data = train_data[0]
@@ -39,6 +39,6 @@ if __name__ == '__main__':
         train_data = [x_data[0:10000], y_data[0:10000]]
         test_data = [x_data[10000:20000], y_data[10000:20000]]
 
-    model = DecisionTree()
+    model = LogisticRegressionModel()
     model.train(train_data)
     model.test(test_data)

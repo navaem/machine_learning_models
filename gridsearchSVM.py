@@ -1,5 +1,6 @@
 import numpy as np
-from sklearn import tree
+from sklearn import model_selection
+from sklearn import svm
 import argparse
 import datasets.uci_adult
 
@@ -9,8 +10,12 @@ class DecisionTree:
     clf_model = None
 
     def __init__(self):
-        self.clf_model = tree.DecisionTreeClassifier()
-        print("Created DecisionTreeClassifier")
+        Cs = [0.001, 0.01, 0.1, 1, 10]
+        gammas = [0.001, 0.01, 0.1, 1]
+        parameters = {'C': Cs, 'gamma' : gammas}
+        svm_model = svm.SVC()
+        self.clf_model = model_selection.GridSearchCV(svm_model, parameters)
+        print("Created GridSearchCV")
 
     def train(self, train_data):
         data = train_data[0]
@@ -22,7 +27,8 @@ class DecisionTree:
         print("Beginning Test")
         predict_vec = self.clf_model.predict(data[0])
         predict_vec = predict_vec == data[1]
-        print("Test accuracy: ", np.sum(predict_vec)/len(predict_vec))
+        test_acc = np.sum(predict_vec)/len(predict_vec)
+        print("Test accuracy: ", test_acc)
 
 
 if __name__ == '__main__':

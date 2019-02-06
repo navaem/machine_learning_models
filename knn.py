@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn import tree
+from sklearn import neighbors
 import argparse
 import datasets.uci_adult
 
@@ -9,8 +9,8 @@ class DecisionTree:
     clf_model = None
 
     def __init__(self):
-        self.clf_model = tree.DecisionTreeClassifier()
-        print("Created DecisionTreeClassifier")
+        self.clf_model = neighbors.KNeighborsClassifier()
+        print("Created KNeighborsClassifier")
 
     def train(self, train_data):
         data = train_data[0]
