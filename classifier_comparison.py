@@ -5,9 +5,8 @@ import sklearn
 import numpy as np
 
 
-
-def main(args):
-    dataset = args.use_dataset
+def main(arguments):
+    dataset = arguments.use_dataset
     test_data = None
     train_data = None
     if dataset == "uci_adult":
@@ -59,6 +58,7 @@ def main(args):
     gridsearchSVM.SupportVectorClassifier()
     model.train(train_data)
     model.test(test_data)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
