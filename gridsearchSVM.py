@@ -5,7 +5,7 @@ import argparse
 import datasets.uci_adult
 
 
-class DecisionTree:
+class SupportVectorClassifier:
 
     clf_model = None
 
@@ -45,6 +45,6 @@ if __name__ == '__main__':
         train_data = [x_data[0:10000], y_data[0:10000]]
         test_data = [x_data[10000:20000], y_data[10000:20000]]
 
-    model = DecisionTree()
+    model = SupportVectorClassifier()
     model.train(train_data)
     model.test(test_data)

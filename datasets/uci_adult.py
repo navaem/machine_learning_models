@@ -5,7 +5,7 @@ zip_data_path = "data/adult.dat"
 zip_domain_path = "data/adult.domain"
 
 
-def data(delete_file: bool = True):
+def data(delete_file: bool = False):
     processor.download_data()
     processor.extract_data(zip_data_path, zip_domain_path)
     (x, y) = processor.process_data(zip_data_path, zip_domain_path)
