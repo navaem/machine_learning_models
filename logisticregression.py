@@ -12,11 +12,12 @@ class LogisticRegressionModel:
         self.clf_model = linear_model.LogisticRegression()
         print("Created LogisticRegressionModel")
 
-    def train(self, train_data):
-        data = train_data[0]
-        labels = train_data[1]
+    def train(self, t_data):
+        data = t_data[0]
+        labels = t_data[1]
         print("Fitting model to training data.")
         self.clf_model.fit(data, labels)
+        print("Training Acc: ", self.clf_model.score(data, labels))
 
     def test(self, data):
         print("Beginning Test")

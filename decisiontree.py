@@ -6,23 +6,23 @@ import datasets.uci_adult
 
 class DecisionTree:
 
-    clf_model = None
+    clf_model: tree.DecisionTreeClassifier = None
 
     def __init__(self):
         self.clf_model = tree.DecisionTreeClassifier()
         print("Created DecisionTreeClassifier")
 
-    def train(self, train_data):
-        data = train_data[0]
-        labels = train_data[1]
+    def train(self, t_data):
+        data = t_data[0]
+        labels = t_data[1]
         print("Fitting model to training data.")
         self.clf_model.fit(data, labels)
+        print("Training Acc: ", self.clf_model.score(data, labels))
 
     def test(self, data):
         print("Beginning Test")
-        predict_vec = self.clf_model.predict(data[0])
-        predict_vec = predict_vec == data[1]
-        print("Test accuracy: ", np.sum(predict_vec)/len(predict_vec))
+        test_score = self.clf_model.score(data[0], data[1])
+        print("Test accuracy: ", test_score)
 
 
 if __name__ == '__main__':

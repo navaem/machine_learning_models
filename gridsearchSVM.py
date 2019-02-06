@@ -17,11 +17,12 @@ class SupportVectorClassifier:
         self.clf_model = model_selection.GridSearchCV(svm_model, parameters)
         print("Created GridSearchCV")
 
-    def train(self, train_data):
-        data = train_data[0]
-        labels = train_data[1]
+    def train(self, t_data):
+        data = t_data[0]
+        labels = t_data[1]
         print("Fitting model to training data.")
         self.clf_model.fit(data, labels)
+        print("Training Acc: ", self.clf_model.score(data, labels))
 
     def test(self, data):
         print("Beginning Test")
@@ -42,7 +43,7 @@ if __name__ == '__main__':
     test_data = args.test_data
     if train_data == "":
         x_data, y_data = datasets.uci_adult.data()
-        train_data = [x_data[0:10000], y_data[0:10000]]
+        t_data = [x_data[0:10000], y_data[0:10000]]
         test_data = [x_data[10000:20000], y_data[10000:20000]]
 
     model = SupportVectorClassifier()
