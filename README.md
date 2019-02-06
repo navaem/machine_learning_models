@@ -8,7 +8,7 @@ Run and compare various machine learning models for classification using scikit-
 - k-Nearest Neighbors Classifier
 - Support Vector Machine
 
-## To Train and Test all of the Models
+## To Train and Test all of the Models:
 ```
 python classifier_comparison.py --use_dataset "uci_adult"
 ```
